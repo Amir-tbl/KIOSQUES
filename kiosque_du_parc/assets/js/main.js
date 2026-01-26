@@ -57,6 +57,7 @@
         // Location
         todayLocation: document.getElementById('today-location'),
         todayHours: document.getElementById('today-hours'),
+        todayMessage: document.getElementById('today-message'),
         scheduleGrid: document.getElementById('schedule-grid'),
 
         // Contact
@@ -233,7 +234,10 @@
             }
             // Display daily message if exists
             if (location.message && elements.todayMessage) {
-                elements.todayMessage.textContent = location.message;
+                const messageText = elements.todayMessage.querySelector('.today-message__text');
+                if (messageText) {
+                    messageText.textContent = location.message;
+                }
                 elements.todayMessage.hidden = false;
             }
         }

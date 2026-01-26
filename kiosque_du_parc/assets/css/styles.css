@@ -541,6 +541,60 @@ select {
     transform: translateY(0);
 }
 
+/* ----- Message du jour ----- */
+.today-message {
+    background: linear-gradient(135deg, var(--color-accent-gold), #f0b429);
+    color: var(--color-gray-900);
+    padding: var(--spacing-4) 0;
+    text-align: center;
+    animation: slideDown 0.5s ease forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.today-message__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-3);
+    flex-wrap: wrap;
+}
+
+.today-message__content i {
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.today-message__text {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .today-message {
+        padding: var(--spacing-3) 0;
+    }
+
+    .today-message__text {
+        font-size: var(--font-size-base);
+    }
+}
+
 /* ----- Product Cards ----- */
 .bestsellers__grid,
 .menu__grid {
