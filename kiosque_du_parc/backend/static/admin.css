@@ -429,6 +429,32 @@ body {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     overflow: hidden;
+    position: relative;
+}
+
+/* Wrapper pour scroll horizontal */
+.table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+/* Masquer la scrollbar sur desktop mais garder le scroll */
+.table-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+    background: var(--gray-100);
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+    background: var(--gray-300);
+    border-radius: 4px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-400);
 }
 
 .data-table {
@@ -977,6 +1003,12 @@ body {
         padding: 12px 0 0;
         margin-top: 12px;
         border-top: 1px solid var(--gray-200);
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
     }
 
     .nav-link {
@@ -996,16 +1028,154 @@ body {
         flex-direction: column;
     }
 
-    .data-table {
+    /* Tables responsive avec scroll horizontal */
+    .table-container {
+        margin: 0 -12px;
+        border-radius: 0;
+        box-shadow: none;
+        border-top: 1px solid var(--gray-200);
+        border-bottom: 1px solid var(--gray-200);
+    }
+
+    .table-scroll {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .table-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    .data-table,
+    .admin-table {
         font-size: 13px;
+        min-width: 600px;
     }
 
     .data-table th,
-    .data-table td {
+    .data-table td,
+    .admin-table th,
+    .admin-table td {
         padding: 10px 12px;
+        white-space: nowrap;
     }
 
     .actions {
+        flex-direction: row;
+        gap: 4px;
+    }
+
+    .actions .btn-small {
+        padding: 6px 10px;
+    }
+
+    /* Indicateur de scroll */
+    .table-container::before {
+        content: '← Glissez pour voir plus →';
+        display: block;
+        text-align: center;
+        padding: 8px;
+        font-size: 12px;
+        color: var(--gray-400);
+        background: var(--gray-50);
+        border-bottom: 1px solid var(--gray-200);
+    }
+
+    /* Stats grid */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 16px;
         flex-direction: column;
+        text-align: center;
+    }
+
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .stat-value {
+        font-size: 24px;
+    }
+
+    /* Admin main */
+    .admin-main {
+        padding: 16px;
+    }
+
+    /* Message view */
+    .message-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .message-header {
+        padding: 16px;
+    }
+
+    .message-body {
+        padding: 16px;
+    }
+
+    .message-actions {
+        flex-direction: column;
+    }
+
+    /* Form container */
+    .form-container {
+        padding: 20px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .admin-nav {
+        padding: 10px;
+    }
+
+    .nav-brand {
+        font-size: 16px;
+    }
+
+    .nav-brand i {
+        font-size: 20px;
+    }
+
+    .page-header h1 {
+        font-size: 20px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-sections {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    .data-table,
+    .admin-table {
+        min-width: 500px;
+    }
+
+    .login-card {
+        padding: 24px;
+    }
+
+    .login-header i {
+        font-size: 36px;
+    }
+
+    .login-header h1 {
+        font-size: 20px;
     }
 }
