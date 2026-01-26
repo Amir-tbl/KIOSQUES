@@ -10,7 +10,7 @@
     // CONFIGURATION
     // =====================================================
 
-    const API_BASE = '/api';
+    const API_BASE = 'https://kiosques.onrender.com/api';
 
     // Category labels (mapping from backend to frontend)
     const CATEGORY_LABELS = {
