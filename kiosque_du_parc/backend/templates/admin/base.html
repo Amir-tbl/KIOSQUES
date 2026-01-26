@@ -15,23 +15,23 @@
             <span>KIOSQUE DU PARC</span>
         </div>
         <div class="nav-links">
-            <a href="/admin" class="nav-link {% if request.url.path == '/admin' %}active{% endif %}">
-                <i class="fa-solid fa-gauge"></i> Dashboard
+            <a href="/admin" class="nav-link {% if request.url.path == '/admin' %}active{% endif %}" data-label="Dashboard" title="Dashboard">
+                <i class="fa-solid fa-gauge"></i><span class="nav-text"> Dashboard</span>
             </a>
-            <a href="/admin/products" class="nav-link {% if '/products' in request.url.path %}active{% endif %}">
-                <i class="fa-solid fa-utensils"></i> Produits
+            <a href="/admin/products" class="nav-link {% if '/products' in request.url.path %}active{% endif %}" data-label="Produits" title="Produits">
+                <i class="fa-solid fa-utensils"></i><span class="nav-text"> Produits</span>
             </a>
-            <a href="/admin/location" class="nav-link {% if '/location' in request.url.path %}active{% endif %}">
-                <i class="fa-solid fa-location-dot"></i> Localisation
+            <a href="/admin/location" class="nav-link {% if '/location' in request.url.path %}active{% endif %}" data-label="Localisation" title="Localisation">
+                <i class="fa-solid fa-location-dot"></i><span class="nav-text"> Lieu</span>
             </a>
-            <a href="/admin/schedule" class="nav-link {% if '/schedule' in request.url.path %}active{% endif %}">
-                <i class="fa-solid fa-calendar"></i> Planning
+            <a href="/admin/schedule" class="nav-link {% if '/schedule' in request.url.path %}active{% endif %}" data-label="Planning" title="Planning">
+                <i class="fa-solid fa-calendar"></i><span class="nav-text"> Planning</span>
             </a>
-            <a href="/admin/messages" class="nav-link {% if '/messages' in request.url.path %}active{% endif %}">
-                <i class="fa-solid fa-envelope"></i> Messages
+            <a href="/admin/messages" class="nav-link {% if '/messages' in request.url.path %}active{% endif %}" data-label="Messages" title="Messages">
+                <i class="fa-solid fa-envelope"></i><span class="nav-text"> Messages</span>
             </a>
-            <a href="/admin/settings" class="nav-link {% if '/settings' in request.url.path %}active{% endif %}">
-                <i class="fa-solid fa-gear"></i> Parametres
+            <a href="/admin/settings" class="nav-link {% if '/settings' in request.url.path %}active{% endif %}" data-label="Parametres" title="Parametres">
+                <i class="fa-solid fa-gear"></i><span class="nav-text"> Params</span>
             </a>
         </div>
         <div class="nav-user">

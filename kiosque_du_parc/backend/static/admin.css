@@ -989,22 +989,62 @@ body {
     .admin-nav {
         flex-wrap: wrap;
         height: auto;
-        padding: 12px;
+        padding: 10px;
+        gap: 8px;
     }
 
     .nav-brand {
         margin-right: auto;
+        font-size: 14px;
     }
 
+    .nav-brand span {
+        display: none;
+    }
+
+    .nav-brand i {
+        font-size: 20px;
+    }
+
+    /* User info et déconnexion en icônes */
+    .nav-user {
+        order: 2;
+        gap: 8px;
+    }
+
+    .nav-user span {
+        display: none;
+    }
+
+    .nav-user::before {
+        content: '\f007';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        color: var(--gray-500);
+        font-size: 16px;
+    }
+
+    .btn-logout {
+        padding: 8px;
+        font-size: 0;
+    }
+
+    .btn-logout i {
+        font-size: 16px;
+    }
+
+    /* Navigation en icônes seulement */
     .nav-links {
         order: 3;
         width: 100%;
         overflow-x: auto;
-        padding: 12px 0 0;
-        margin-top: 12px;
+        padding: 10px 0 0;
+        margin-top: 8px;
         border-top: 1px solid var(--gray-200);
         scrollbar-width: none;
         -ms-overflow-style: none;
+        justify-content: center;
+        gap: 4px;
     }
 
     .nav-links::-webkit-scrollbar {
@@ -1012,12 +1052,26 @@ body {
     }
 
     .nav-link {
-        white-space: nowrap;
+        padding: 10px 14px;
+        border-radius: 8px;
+    }
+
+    .nav-link i {
+        font-size: 18px;
+        margin: 0;
+    }
+
+    .nav-link .nav-text {
+        display: none;
     }
 
     .page-header {
         flex-direction: column;
         gap: 16px;
+    }
+
+    .page-header h1 {
+        font-size: 18px;
     }
 
     .form-row {
