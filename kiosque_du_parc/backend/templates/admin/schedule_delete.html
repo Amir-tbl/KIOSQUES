@@ -1,0 +1,47 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Supprimer creneau{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1><i class="fa-solid fa-trash"></i> Supprimer le creneau</h1>
+        <p>Cette action est irreversible</p>
+    </div>
+    <a href="/admin/schedule" class="btn btn-secondary">
+        <i class="fa-solid fa-arrow-left"></i> Retour
+    </a>
+</div>
+
+<div class="delete-confirmation">
+    <div class="delete-icon">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+    </div>
+
+    <h2>Confirmer la suppression</h2>
+
+    <div class="delete-item">
+        <div class="delete-item-info">
+            <strong>{{ day_names.get(schedule.day_of_week, '') }}</strong>
+            <span>{{ schedule.place }}</span>
+            <span>{{ schedule.start_time }} - {{ schedule.end_time }}</span>
+        </div>
+    </div>
+
+    <p class="delete-warning">
+        Etes-vous sur de vouloir supprimer ce creneau ?<br>
+        Cette action ne peut pas etre annulee.
+    </p>
+
+    <div class="delete-actions">
+        <form method="POST" action="/admin/schedule/{{ schedule.id }}/delete">
+            <button type="submit" class="btn btn-danger">
+                <i class="fa-solid fa-trash"></i> Oui, supprimer
+            </button>
+        </form>
+        <a href="/admin/schedule" class="btn btn-secondary">
+            <i class="fa-solid fa-xmark"></i> Annuler
+        </a>
+    </div>
+</div>
+{% endblock %}

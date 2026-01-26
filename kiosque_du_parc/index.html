@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KIOSQUE DU PARC - Foodtruck de crepes, gaufres et gourmandises. Du sucre, du sale, fait minute.">
+    <meta name="theme-color" content="#2d5a27">
+    <title>KIOSQUE DU PARC | Foodtruck Crepes & Gaufres</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header__container container">
+            <a href="#accueil" class="header__logo" aria-label="KIOSQUE DU PARC - Retour a l'accueil">
+                <i class="fa-solid fa-leaf" aria-hidden="true"></i>
+                <span>KIOSQUE DU PARC</span>
+            </a>
+
+            <nav class="header__nav" id="nav-menu" aria-label="Navigation principale">
+                <ul class="header__nav-list">
+                    <li><a href="#accueil" class="header__nav-link active">Accueil</a></li>
+                    <li><a href="#bestsellers" class="header__nav-link">Best-sellers</a></li>
+                    <li><a href="#menu" class="header__nav-link">Menu</a></li>
+                    <li><a href="#sucre" class="header__nav-link">Sucre</a></li>
+                    <li><a href="#sale" class="header__nav-link">Sale</a></li>
+                    <li><a href="#localisation" class="header__nav-link">Ou nous trouver</a></li>
+                    <li><a href="#contact" class="header__nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header__actions">
+                <a href="#localisation" class="btn btn--primary btn--small header__cta-btn">
+                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                    <span>Nous trouver</span>
+                </a>
+
+                <button class="header__burger" id="burger-menu" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
+                    <span class="header__burger-line"></span>
+                    <span class="header__burger-line"></span>
+                    <span class="header__burger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="accueil">
+            <div class="hero__background">
+                <img src="assets/img/banner.jpg" alt="Crepes et gaufres gourmandes du KIOSQUE DU PARC" loading="eager">
+                <div class="hero__overlay"></div>
+            </div>
+            <div class="hero__content container">
+                <h1 class="hero__title animate-fade-up">KIOSQUE DU PARC</h1>
+                <p class="hero__slogan animate-fade-up">Du sucre, du sale, fait minute.</p>
+                <div class="hero__cta animate-fade-up">
+                    <a href="#menu" class="btn btn--primary">
+                        <i class="fa-solid fa-utensils" aria-hidden="true"></i>
+                        Voir le menu
+                    </a>
+                    <a href="#localisation" class="btn btn--secondary">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        Nous trouver
+                    </a>
+                </div>
+                <div class="hero__badges animate-fade-up">
+                    <div class="hero__badge">
+                        <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                        <span>Fait minute</span>
+                    </div>
+                    <div class="hero__badge">
+                        <i class="fa-solid fa-truck" aria-hidden="true"></i>
+                        <span>Foodtruck</span>
+                    </div>
+                    <div class="hero__badge">
+                        <i class="fa-solid fa-cookie-bite" aria-hidden="true"></i>
+                        <span>Sucre & Sale</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Sellers Section -->
+        <section class="bestsellers section" id="bestsellers">
+            <div class="container">
+                <header class="section__header animate-on-scroll">
+                    <span class="section__label">Les incontournables</span>
+                    <h2 class="section__title">Nos Best-sellers</h2>
+                    <p class="section__subtitle">Decouvrez les favoris de nos clients</p>
+                </header>
+                <div class="bestsellers__grid" id="bestsellers-grid">
+                    <!-- Products injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Full Menu Section -->
+        <section class="menu section section--alt" id="menu">
+            <div class="container">
+                <header class="section__header animate-on-scroll">
+                    <span class="section__label">Notre carte</span>
+                    <h2 class="section__title">Menu Complet</h2>
+                    <p class="section__subtitle">Toutes nos gourmandises a decouvrir</p>
+                </header>
+
+                <div class="menu__controls animate-on-scroll">
+                    <div class="menu__filters" role="tablist" aria-label="Filtrer les produits par categorie">
+                        <button class="menu__filter active" data-filter="all" role="tab" aria-selected="true">
+                            <i class="fa-solid fa-border-all" aria-hidden="true"></i>
+                            Tous
+                        </button>
+                        <button class="menu__filter" data-filter="crepe-sucree" role="tab" aria-selected="false">
+                            <i class="fa-solid fa-candy-cane" aria-hidden="true"></i>
+                            Crepes sucrees
+                        </button>
+                        <button class="menu__filter" data-filter="crepe-salee" role="tab" aria-selected="false">
+                            <i class="fa-solid fa-cheese" aria-hidden="true"></i>
+                            Crepes salees
+                        </button>
+                        <button class="menu__filter" data-filter="gaufre" role="tab" aria-selected="false">
+                            <i class="fa-solid fa-stroopwafel" aria-hidden="true"></i>
+                            Gaufres
+                        </button>
+                        <button class="menu__filter" data-filter="box" role="tab" aria-selected="false">
+                            <i class="fa-solid fa-box" aria-hidden="true"></i>
+                            Box
+                        </button>
+                    </div>
+
+                    <div class="menu__search">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                        <input type="search" id="menu-search" class="menu__search-input" placeholder="Rechercher un produit..." aria-label="Rechercher un produit dans le menu">
+                    </div>
+                </div>
+
+                <div class="menu__grid" id="menu-grid" role="tabpanel">
+                    <!-- Products injected by JS -->
+                </div>
+
+                <p class="menu__empty" id="menu-empty" hidden>
+                    <i class="fa-solid fa-face-meh" aria-hidden="true"></i>
+                    Aucun produit ne correspond a votre recherche.
+                </p>
+            </div>
+        </section>
+
+        <!-- Sweet Section -->
+        <section class="category-highlight section" id="sucre">
+            <div class="container">
+                <div class="category-highlight__content animate-on-scroll">
+                    <div class="category-highlight__text">
+                        <span class="section__label">Gourmandises</span>
+                        <h2 class="section__title">Nos Crepes Sucrees</h2>
+                        <p class="category-highlight__description">
+                            Du chocolat fondant au miel dore, en passant par le caramel onctueux et la coco rapee exotique.
+                            Nos crepes sont preparees a la minute avec des ingredients de qualite pour vous offrir
+                            un moment de pur plaisir gourmand.
+                        </p>
+                        <ul class="category-highlight__list">
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Pate fraiche preparee chaque jour</li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Garnitures genereuses</li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Cuisson a la minute</li>
+                        </ul>
+                        <a href="#menu" class="btn btn--primary" data-filter-target="crepe-sucree">
+                            <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                            Voir les crepes sucrees
+                        </a>
+                    </div>
+                    <div class="category-highlight__images">
+                        <img src="assets/img/Crêpe_chocolat_banane.jpeg" alt="Crepe chocolat et banane fraiche" loading="lazy" class="category-highlight__img category-highlight__img--main">
+                        <img src="assets/img/Crêpe_miel.jpeg" alt="Crepe nappee de miel dore" loading="lazy" class="category-highlight__img category-highlight__img--secondary">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Savory Section -->
+        <section class="category-highlight section section--alt" id="sale">
+            <div class="container">
+                <div class="category-highlight__content category-highlight__content--reverse animate-on-scroll">
+                    <div class="category-highlight__text">
+                        <span class="section__label">Repas complet</span>
+                        <h2 class="section__title">Nos Crepes Salees</h2>
+                        <p class="category-highlight__description">
+                            Pour une pause dejeuner gourmande ou un encas consistant, nos crepes salees sont la
+                            pour vous regaler. Jambon-fromage classique ou poulet pane croustillant,
+                            il y en a pour tous les gouts.
+                        </p>
+                        <ul class="category-highlight__list">
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Ingredients frais et de qualite</li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Portions genereuses</li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Ideal pour le dejeuner</li>
+                        </ul>
+                        <a href="#menu" class="btn btn--primary" data-filter-target="crepe-salee">
+                            <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                            Voir les crepes salees
+                        </a>
+                    </div>
+                    <div class="category-highlight__images">
+                        <img src="assets/img/crêpe_salée_pouletpané_fromage.jpeg" alt="Crepe salee poulet pane et fromage fondu" loading="lazy" class="category-highlight__img category-highlight__img--main">
+                        <img src="assets/img/crêpe salée_jambon-fromage.jpeg" alt="Crepe salee jambon fromage traditionnelle" loading="lazy" class="category-highlight__img category-highlight__img--secondary">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section class="location section" id="localisation">
+            <div class="container">
+                <header class="section__header animate-on-scroll">
+                    <span class="section__label">Retrouvez-nous</span>
+                    <h2 class="section__title">Ou nous trouver</h2>
+                    <p class="section__subtitle">Nous sommes un foodtruck itinerant, decouvrez nos emplacements</p>
+                </header>
+
+                <div class="location__today animate-on-scroll">
+                    <div class="location__today-card">
+                        <div class="location__today-icon">
+                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        </div>
+                        <div class="location__today-info">
+                            <span class="location__today-label">Emplacement du jour</span>
+                            <h3 class="location__today-place" id="today-location">Parc de la Mairie - Centre-ville</h3>
+                            <p class="location__today-hours" id="today-hours">11h30 - 14h00 / 18h00 - 21h00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location__schedule animate-on-scroll">
+                    <h3 class="location__schedule-title">
+                        <i class="fa-solid fa-calendar-week" aria-hidden="true"></i>
+                        Planning de la semaine
+                    </h3>
+                    <div class="location__grid" id="schedule-grid">
+                        <!-- Schedule injected by JS -->
+                    </div>
+                </div>
+
+                <div class="location__social animate-on-scroll">
+                    <p>Suivez-nous pour connaitre notre emplacement en temps reel !</p>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn btn--outline" aria-label="Voir nos actualites sur Instagram (ouvre un nouvel onglet)">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                        Voir nos actus
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews section section--alt" id="avis">
+            <div class="container">
+                <header class="section__header animate-on-scroll">
+                    <span class="section__label">Temoignages</span>
+                    <h2 class="section__title">Avis Clients</h2>
+                    <p class="section__subtitle">Ce que nos clients pensent de nous</p>
+                </header>
+
+                <div class="reviews__grid animate-on-scroll">
+                    <article class="review">
+                        <div class="review__stars" aria-label="Note: 5 sur 5 etoiles">
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote class="review__text">
+                            "Les meilleures crepes de la region ! Le chocolat est fondant a souhait et la pate est parfaite. Je recommande vivement !"
+                        </blockquote>
+                        <footer class="review__author">
+                            <i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+                            <span>Marie L.</span>
+                        </footer>
+                    </article>
+
+                    <article class="review">
+                        <div class="review__stars" aria-label="Note: 5 sur 5 etoiles">
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote class="review__text">
+                            "Le Riz Crousty est une tuerie ! Original et delicieux. Service rapide et souriant malgre la file d'attente."
+                        </blockquote>
+                        <footer class="review__author">
+                            <i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+                            <span>Thomas D.</span>
+                        </footer>
+                    </article>
+
+                    <article class="review">
+                        <div class="review__stars" aria-label="Note: 4 sur 5 etoiles">
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-regular fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote class="review__text">
+                            "Super foodtruck ! La crepe poulet pane fromage est genereuse et savoureuse. Hate de les revoir sur le marche !"
+                        </blockquote>
+                        <footer class="review__author">
+                            <i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+                            <span>Sophie M.</span>
+                        </footer>
+                    </article>
+
+                    <article class="review">
+                        <div class="review__stars" aria-label="Note: 5 sur 5 etoiles">
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote class="review__text">
+                            "Enfin un foodtruck qui fait des gaufres dignes de ce nom ! La gaufre chocolat avec les eclats est un delice."
+                        </blockquote>
+                        <footer class="review__author">
+                            <i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+                            <span>Pierre B.</span>
+                        </footer>
+                    </article>
+
+                    <article class="review">
+                        <div class="review__stars" aria-label="Note: 5 sur 5 etoiles">
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote class="review__text">
+                            "Accueil chaleureux et produits de qualite. Les crepes sont faites devant nous, on sent la fraicheur !"
+                        </blockquote>
+                        <footer class="review__author">
+                            <i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+                            <span>Julie R.</span>
+                        </footer>
+                    </article>
+
+                    <article class="review">
+                        <div class="review__stars" aria-label="Note: 4 sur 5 etoiles">
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-solid fa-star" aria-hidden="true"></i>
+                            <i class="fa-regular fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote class="review__text">
+                            "Rapport qualite-prix imbattable. La crepe au miel est simple mais tellement bonne. Un vrai regal !"
+                        </blockquote>
+                        <footer class="review__author">
+                            <i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+                            <span>Antoine G.</span>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section" id="contact">
+            <div class="container">
+                <header class="section__header animate-on-scroll">
+                    <span class="section__label">Une question ?</span>
+                    <h2 class="section__title">Contactez-nous</h2>
+                    <p class="section__subtitle">Pour une reservation, un evenement ou toute autre demande</p>
+                </header>
+
+                <div class="contact__content animate-on-scroll">
+                    <div class="contact__info">
+                        <div class="contact__card">
+                            <div class="contact__card-icon">
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact__card-content">
+                                <h3>Foodtruck itinerant</h3>
+                                <p>Retrouvez-nous chaque jour a un emplacement different. Consultez notre planning !</p>
+                            </div>
+                        </div>
+
+                        <div class="contact__card">
+                            <div class="contact__card-icon">
+                                <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact__card-content">
+                                <h3>Horaires</h3>
+                                <p>Lundi - Vendredi : 11h30 - 14h00</p>
+                                <p>Soir (selon emplacement) : 18h00 - 21h00</p>
+                                <p>Week-end : 09h00 - 15h00</p>
+                            </div>
+                        </div>
+
+                        <div class="contact__card">
+                            <div class="contact__card-icon">
+                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact__card-content">
+                                <h3>Reseaux sociaux</h3>
+                                <p>Suivez-nous pour nos actualites et emplacements en temps reel !</p>
+                                <div class="contact__social">
+                                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                                        <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact__form-container">
+                        <form class="contact__form" id="contact-form">
+                            <div class="form__group">
+                                <label for="contact-name">Nom complet *</label>
+                                <input type="text" id="contact-name" name="name" required minlength="2" maxlength="100" placeholder="Votre nom">
+                            </div>
+
+                            <div class="form__row">
+                                <div class="form__group">
+                                    <label for="contact-email">Email *</label>
+                                    <input type="email" id="contact-email" name="email" required placeholder="votre@email.com">
+                                </div>
+                                <div class="form__group">
+                                    <label for="contact-phone">Telephone</label>
+                                    <input type="tel" id="contact-phone" name="phone" maxlength="20" placeholder="06 12 34 56 78">
+                                </div>
+                            </div>
+
+                            <div class="form__group">
+                                <label for="contact-subject">Sujet *</label>
+                                <select id="contact-subject" name="subject" required>
+                                    <option value="">Selectionnez un sujet</option>
+                                    <option value="Reservation pour evenement">Reservation pour evenement</option>
+                                    <option value="Information sur les produits">Information sur les produits</option>
+                                    <option value="Partenariat / Collaboration">Partenariat / Collaboration</option>
+                                    <option value="Reclamation">Reclamation</option>
+                                    <option value="Autre demande">Autre demande</option>
+                                </select>
+                            </div>
+
+                            <div class="form__group">
+                                <label for="contact-message">Message *</label>
+                                <textarea id="contact-message" name="message" required minlength="10" maxlength="2000" rows="5" placeholder="Votre message..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn--primary btn--full" id="contact-submit">
+                                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                                <span>Envoyer le message</span>
+                            </button>
+
+                            <div class="form__status" id="form-status" hidden>
+                                <div class="form__status-icon"></div>
+                                <p class="form__status-message"></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="#accueil" class="footer__logo" aria-label="KIOSQUE DU PARC - Retour a l'accueil">
+                        <i class="fa-solid fa-leaf" aria-hidden="true"></i>
+                        <span>KIOSQUE DU PARC</span>
+                    </a>
+                    <p class="footer__tagline">Du sucre, du sale, fait minute.</p>
+                </div>
+
+                <div class="footer__hours">
+                    <h4 class="footer__title">Horaires generaux</h4>
+                    <ul class="footer__list">
+                        <li><span>Lundi - Vendredi</span> 11h30 - 14h00</li>
+                        <li><span>Soir (selon emplacement)</span> 18h00 - 21h00</li>
+                        <li><span>Week-end</span> 09h00 - 15h00</li>
+                    </ul>
+                </div>
+
+                <div class="footer__social">
+                    <h4 class="footer__title">Suivez-nous</h4>
+                    <div class="footer__social-links">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Instagram (ouvre un nouvel onglet)">
+                            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="TikTok (ouvre un nouvel onglet)">
+                            <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">KIOSQUE DU PARC - Tous droits reserves</p>
+                <a href="#" class="footer__legal">Mentions legales</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

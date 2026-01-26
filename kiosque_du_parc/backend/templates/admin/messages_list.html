@@ -1,0 +1,57 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Messages{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="fa-solid fa-envelope"></i> Messages de contact</h1>
+    <p>{{ messages|length }} message(s) au total</p>
+</div>
+
+{% if messages %}
+<div class="table-container">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Statut</th>
+                <th>Date</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Sujet</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for msg in messages %}
+            <tr class="{% if not msg.is_read %}row-unread{% endif %}">
+                <td>
+                    {% if msg.is_read %}
+                    <span class="badge badge-read"><i class="fa-solid fa-check"></i> Lu</span>
+                    {% else %}
+                    <span class="badge badge-unread"><i class="fa-solid fa-circle"></i> Nouveau</span>
+                    {% endif %}
+                </td>
+                <td>{{ msg.created_at.strftime('%d/%m/%Y %H:%M') }}</td>
+                <td>{{ msg.name }}</td>
+                <td><a href="mailto:{{ msg.email }}">{{ msg.email }}</a></td>
+                <td>{{ msg.subject[:40] }}{% if msg.subject|length > 40 %}...{% endif %}</td>
+                <td class="actions">
+                    <a href="/admin/messages/{{ msg.id }}" class="btn btn-small btn-primary">
+                        <i class="fa-solid fa-eye"></i> Voir
+                    </a>
+                    <a href="/admin/messages/{{ msg.id }}/delete" class="btn btn-small btn-danger">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="empty-state">
+    <i class="fa-solid fa-inbox"></i>
+    <p>Aucun message pour le moment.</p>
+</div>
+{% endif %}
+{% endblock %}

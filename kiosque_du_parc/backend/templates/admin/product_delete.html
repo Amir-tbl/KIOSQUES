@@ -1,0 +1,49 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Supprimer produit{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1><i class="fa-solid fa-trash"></i> Supprimer le produit</h1>
+        <p>Cette action est irreversible</p>
+    </div>
+    <a href="/admin/products" class="btn btn-secondary">
+        <i class="fa-solid fa-arrow-left"></i> Retour
+    </a>
+</div>
+
+<div class="delete-confirmation">
+    <div class="delete-icon">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+    </div>
+
+    <h2>Confirmer la suppression</h2>
+
+    <div class="delete-item">
+        {% if product.image_filename %}
+        <img src="/assets/img/{{ product.image_filename }}" alt="{{ product.name }}">
+        {% endif %}
+        <div class="delete-item-info">
+            <strong>{{ product.name }}</strong>
+            <span>{{ "%.2f"|format(product.price) }} EUR</span>
+        </div>
+    </div>
+
+    <p class="delete-warning">
+        Etes-vous sur de vouloir supprimer ce produit ?<br>
+        Cette action ne peut pas etre annulee.
+    </p>
+
+    <div class="delete-actions">
+        <form method="POST" action="/admin/products/{{ product.id }}/delete">
+            <button type="submit" class="btn btn-danger">
+                <i class="fa-solid fa-trash"></i> Oui, supprimer
+            </button>
+        </form>
+        <a href="/admin/products" class="btn btn-secondary">
+            <i class="fa-solid fa-xmark"></i> Annuler
+        </a>
+    </div>
+</div>
+{% endblock %}

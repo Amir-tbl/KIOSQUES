@@ -1,0 +1,42 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <i class="fa-solid fa-leaf"></i>
+            <h1>KIOSQUE DU PARC</h1>
+            <p>Administration</p>
+        </div>
+
+        {% if error %}
+        <div class="alert alert-error">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST" action="/admin/login" class="login-form">
+            <div class="form-group">
+                <label for="username">
+                    <i class="fa-solid fa-user"></i> Identifiant
+                </label>
+                <input type="text" id="username" name="username" required autofocus>
+            </div>
+
+            <div class="form-group">
+                <label for="password">
+                    <i class="fa-solid fa-lock"></i> Mot de passe
+                </label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+                <i class="fa-solid fa-right-to-bracket"></i> Se connecter
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

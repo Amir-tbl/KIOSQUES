@@ -1,0 +1,97 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="fa-solid fa-gauge"></i> Dashboard</h1>
+    <p>Bienvenue, {{ admin.username }}</p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon" style="background: #2d5a27;">
+            <i class="fa-solid fa-utensils"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-value">{{ stats.active_products }}</span>
+            <span class="stat-label">Produits actifs</span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon" style="background: #c9a227;">
+            <i class="fa-solid fa-star"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-value">{{ stats.bestsellers }}</span>
+            <span class="stat-label">Best-sellers</span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon" style="background: #d4a574;">
+            <i class="fa-solid fa-calendar"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-value">{{ stats.schedules_count }}</span>
+            <span class="stat-label">Creneaux actifs</span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon" style="background: #525252;">
+            <i class="fa-solid fa-box"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-value">{{ stats.total_products }}</span>
+            <span class="stat-label">Produits total</span>
+        </div>
+    </div>
+
+    <div class="stat-card {% if stats.unread_messages > 0 %}stat-highlight{% endif %}">
+        <div class="stat-icon" style="background: #e74c3c;">
+            <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-value">{{ stats.unread_messages }}</span>
+            <span class="stat-label">Messages non lus</span>
+        </div>
+    </div>
+</div>
+
+<div class="dashboard-sections">
+    <div class="dashboard-section">
+        <h2><i class="fa-solid fa-location-dot"></i> Emplacement du jour</h2>
+        <div class="location-preview">
+            {% if location %}
+            <p class="location-place">{{ location.today_location or "Non defini" }}</p>
+            <p class="location-hours">{{ location.today_hours or "" }}</p>
+            {% if location.daily_message %}
+            <p class="location-message"><i class="fa-solid fa-info-circle"></i> {{ location.daily_message }}</p>
+            {% endif %}
+            {% else %}
+            <p class="location-place">Aucun emplacement defini</p>
+            {% endif %}
+            <a href="/admin/location" class="btn btn-secondary">
+                <i class="fa-solid fa-pen"></i> Modifier
+            </a>
+        </div>
+    </div>
+
+    <div class="dashboard-section">
+        <h2><i class="fa-solid fa-bolt"></i> Actions rapides</h2>
+        <div class="quick-actions">
+            <a href="/admin/products/new" class="btn btn-primary">
+                <i class="fa-solid fa-plus"></i> Nouveau produit
+            </a>
+            <a href="/admin/schedule/new" class="btn btn-secondary">
+                <i class="fa-solid fa-plus"></i> Nouveau creneau
+            </a>
+            <a href="/" target="_blank" class="btn btn-outline">
+                <i class="fa-solid fa-external-link"></i> Voir le site
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

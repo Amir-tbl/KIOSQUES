@@ -1,0 +1,73 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Planning{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1><i class="fa-solid fa-calendar"></i> Planning hebdomadaire</h1>
+        <p>Gerez les emplacements de la semaine</p>
+    </div>
+    <a href="/admin/schedule/new" class="btn btn-primary">
+        <i class="fa-solid fa-plus"></i> Nouveau creneau
+    </a>
+</div>
+
+<div class="table-container">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Jour</th>
+                <th>Lieu</th>
+                <th>Debut</th>
+                <th>Fin</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for schedule in schedules %}
+            <tr class="{% if not schedule.is_active %}inactive{% endif %} {% if schedule.day_of_week >= 5 %}weekend{% endif %}">
+                <td>
+                    <strong>{{ day_names.get(schedule.day_of_week, '') }}</strong>
+                </td>
+                <td>{{ schedule.place }}</td>
+                <td>{{ schedule.start_time }}</td>
+                <td>{{ schedule.end_time }}</td>
+                <td>
+                    {% if schedule.is_active %}
+                    <span class="badge badge-success"><i class="fa-solid fa-check"></i> Actif</span>
+                    {% else %}
+                    <span class="badge badge-muted"><i class="fa-solid fa-eye-slash"></i> Inactif</span>
+                    {% endif %}
+                </td>
+                <td class="actions">
+                    <a href="/admin/schedule/{{ schedule.id }}/edit" class="btn btn-small btn-secondary" title="Modifier">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                    <a href="/admin/schedule/{{ schedule.id }}/delete" class="btn btn-small btn-danger" title="Supprimer">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6" class="empty-message">
+                    <i class="fa-solid fa-inbox"></i>
+                    <p>Aucun creneau defini</p>
+                    <a href="/admin/schedule/new" class="btn btn-primary">Ajouter un creneau</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="info-box">
+    <h3><i class="fa-solid fa-info-circle"></i> Information</h3>
+    <p>
+        Vous pouvez definir plusieurs creneaux pour un meme jour (midi et soir par exemple).
+        Les creneaux inactifs ne seront pas affiches sur le site.
+    </p>
+</div>
+{% endblock %}
