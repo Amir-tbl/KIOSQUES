@@ -103,8 +103,18 @@
                     <h2 class="section__title">Nos Best-sellers</h2>
                     <p class="section__subtitle">Decouvrez les favoris de nos clients</p>
                 </header>
-                <div class="bestsellers__grid" id="bestsellers-grid">
-                    <!-- Products injected by JS -->
+                <div class="carousel" data-carousel>
+                    <button class="carousel__btn carousel__btn--prev" data-carousel-prev aria-label="Produits precedents">
+                        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                    </button>
+                    <div class="carousel__track">
+                        <div class="bestsellers__grid" id="bestsellers-grid">
+                            <!-- Products injected by JS -->
+                        </div>
+                    </div>
+                    <button class="carousel__btn carousel__btn--next" data-carousel-next aria-label="Produits suivants">
+                        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
         </section>
@@ -148,8 +158,18 @@
                     </div>
                 </div>
 
-                <div class="menu__grid" id="menu-grid" role="tabpanel">
-                    <!-- Products injected by JS -->
+                <div class="carousel" data-carousel>
+                    <button class="carousel__btn carousel__btn--prev" data-carousel-prev aria-label="Produits precedents">
+                        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                    </button>
+                    <div class="carousel__track">
+                        <div class="menu__grid" id="menu-grid" role="tabpanel">
+                            <!-- Products injected by JS -->
+                        </div>
+                    </div>
+                    <button class="carousel__btn carousel__btn--next" data-carousel-next aria-label="Produits suivants">
+                        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                    </button>
                 </div>
 
                 <p class="menu__empty" id="menu-empty" hidden>

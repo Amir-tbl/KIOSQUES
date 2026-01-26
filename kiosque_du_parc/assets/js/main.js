@@ -380,6 +380,59 @@
     }
 
     // =====================================================
+    // CAROUSEL NAVIGATION
+    // =====================================================
+
+    function initCarousels() {
+        const carousels = document.querySelectorAll('[data-carousel]');
+
+        carousels.forEach(carousel => {
+            const track = carousel.querySelector('.carousel__track');
+            const prevBtn = carousel.querySelector('[data-carousel-prev]');
+            const nextBtn = carousel.querySelector('[data-carousel-next]');
+
+            if (!track || !prevBtn || !nextBtn) return;
+
+            const scrollAmount = 300;
+
+            // Update button states based on scroll position
+            function updateButtons() {
+                const { scrollLeft, scrollWidth, clientWidth } = track;
+                prevBtn.disabled = scrollLeft <= 0;
+                nextBtn.disabled = scrollLeft >= scrollWidth - clientWidth - 10;
+            }
+
+            // Scroll handlers
+            prevBtn.addEventListener('click', () => {
+                track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            // Update buttons on scroll
+            track.addEventListener('scroll', updateButtons, { passive: true });
+
+            // Initial state
+            updateButtons();
+
+            // Update on window resize
+            window.addEventListener('resize', updateButtons, { passive: true });
+
+            // MutationObserver to update buttons when content changes
+            const observer = new MutationObserver(() => {
+                setTimeout(updateButtons, 100);
+            });
+
+            const grid = track.querySelector('.bestsellers__grid, .menu__grid');
+            if (grid) {
+                observer.observe(grid, { childList: true });
+            }
+        });
+    }
+
+    // =====================================================
     // HEADER SCROLL EFFECT
     // =====================================================
 
@@ -496,6 +549,9 @@
 
         // Render menu with fetched products
         renderMenu();
+
+        // Initialize carousels after products are rendered
+        initCarousels();
 
         // Start scroll animations
         observeAnimations();
