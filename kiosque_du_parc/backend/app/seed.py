@@ -15,81 +15,81 @@ from app.settings import INIT_ADMIN_USERNAME, INIT_ADMIN_PASSWORD
 # Initial products data
 INITIAL_PRODUCTS = [
     {
-        "name": "Crepe au miel",
+        "name": "Crêpe au miel",
         "category": "crepes_sucrees",
         "price": 3.50,
         "image_filename": "Crêpe_miel.jpeg",
-        "description": "Crepe nappee de miel dore",
+        "description": "Crêpe nappée de miel doré",
         "is_active": True,
         "is_best_seller": True,
         "display_order": 1
     },
     {
-        "name": "Crepe caramel",
+        "name": "Crêpe caramel",
         "category": "crepes_sucrees",
         "price": 3.50,
         "image_filename": "Crêpe_caramel.jpeg",
-        "description": "Crepe au caramel onctueux",
+        "description": "Crêpe au caramel onctueux",
         "is_active": True,
         "is_best_seller": True,
         "display_order": 2
     },
     {
-        "name": "Crepe chocolat + banane",
+        "name": "Crêpe chocolat + banane",
         "category": "crepes_sucrees",
         "price": 4.90,
         "image_filename": "Crêpe_chocolat_banane.jpeg",
-        "description": "Crepe chocolat avec banane fraiche",
+        "description": "Crêpe chocolat avec banane fraîche",
         "is_active": True,
         "is_best_seller": True,
         "display_order": 3
     },
     {
-        "name": "Crepe chocolat + coco rapee",
+        "name": "Crêpe chocolat + coco râpée",
         "category": "crepes_sucrees",
         "price": 4.90,
         "image_filename": "Crêpe_chocolat_coco_râpée.jpeg",
-        "description": "Crepe chocolat avec coco rapee",
+        "description": "Crêpe chocolat avec coco râpée",
         "is_active": True,
         "is_best_seller": False,
         "display_order": 4
     },
     {
-        "name": "Crepe chocolat",
+        "name": "Crêpe chocolat",
         "category": "crepes_sucrees",
         "price": 3.90,
         "image_filename": "Crêpe_chocolat.jpeg",
-        "description": "Crepe au chocolat fondant",
+        "description": "Crêpe au chocolat fondant",
         "is_active": True,
         "is_best_seller": False,
         "display_order": 5
     },
     {
-        "name": "Crepe salee jambon-fromage",
+        "name": "Crêpe salée jambon-fromage",
         "category": "crepes_salees",
         "price": 5.50,
         "image_filename": "crêpe salée_jambon-fromage.jpeg",
-        "description": "Crepe salee jambon et fromage fondu",
+        "description": "Crêpe salée jambon et fromage fondu",
         "is_active": True,
         "is_best_seller": False,
         "display_order": 6
     },
     {
-        "name": "Crepe salee poulet pane + fromage",
+        "name": "Crêpe salée poulet pané + fromage",
         "category": "crepes_salees",
         "price": 6.50,
         "image_filename": "crêpe_salée_pouletpané_fromage.jpeg",
-        "description": "Crepe salee poulet pane croustillant avec fromage",
+        "description": "Crêpe salée poulet pané croustillant avec fromage",
         "is_active": True,
         "is_best_seller": True,
         "display_order": 7
     },
     {
-        "name": "Gaufre chocolat + eclats",
+        "name": "Gaufre chocolat + éclats",
         "category": "gaufres",
         "price": 4.50,
         "image_filename": "Gaufre_chocolat_éclats.jpeg",
-        "description": "Gaufre chocolat avec eclats croustillants",
+        "description": "Gaufre chocolat avec éclats croustillants",
         "is_active": True,
         "is_best_seller": True,
         "display_order": 8
@@ -99,7 +99,7 @@ INITIAL_PRODUCTS = [
         "category": "gaufres",
         "price": 3.50,
         "image_filename": "Gaufre nature_sucre_glace.jpeg",
-        "description": "Gaufre nature saupoudree de sucre glace",
+        "description": "Gaufre nature saupoudrée de sucre glace",
         "is_active": True,
         "is_best_seller": False,
         "display_order": 9
@@ -109,7 +109,7 @@ INITIAL_PRODUCTS = [
         "category": "box",
         "price": 7.90,
         "image_filename": "Riz_Crousty.jpeg",
-        "description": "Box Riz Crousty genereux",
+        "description": "Box Riz Crousty généreux",
         "is_active": True,
         "is_best_seller": True,
         "display_order": 10

@@ -88,7 +88,7 @@ class Settings(Base):
     tiktok_url = Column(String(255), default="https://tiktok.com")
     # Site info
     site_name = Column(String(100), default="KIOSQUE DU PARC")
-    slogan = Column(String(200), default="Du sucre, du sale, fait minute.")
+    slogan = Column(String(200), default="Du sucré, du salé, fait minute.")
 
 
 class ContactMessage(Base):
@@ -118,8 +118,8 @@ DAY_NAMES = {
 
 # Category names mapping for display
 CATEGORY_NAMES = {
-    "crepes_sucrees": "Crepes sucrees",
-    "crepes_salees": "Crepes salees",
+    "crepes_sucrees": "Crêpes sucrées",
+    "crepes_salees": "Crêpes salées",
     "gaufres": "Gaufres",
     "box": "Box"
 }

@@ -14,8 +14,8 @@
 
     // Category labels (mapping from backend to frontend)
     const CATEGORY_LABELS = {
-        'crepes_sucrees': 'Crepe sucree',
-        'crepes_salees': 'Crepe salee',
+        'crepes_sucrees': 'Crêpe sucrée',
+        'crepes_salees': 'Crêpe salée',
         'gaufres': 'Gaufre',
         'box': 'Box'
     };
@@ -145,10 +145,10 @@
             tagsHTML.push('<span class="product-card__tag product-card__tag--bestseller">Best-seller</span>');
         }
         if (isSweet) {
-            tagsHTML.push('<span class="product-card__tag product-card__tag--sweet">Sucre</span>');
+            tagsHTML.push('<span class="product-card__tag product-card__tag--sweet">Sucré</span>');
         }
         if (isSavory) {
-            tagsHTML.push('<span class="product-card__tag product-card__tag--savory">Sale</span>');
+            tagsHTML.push('<span class="product-card__tag product-card__tag--savory">Salé</span>');
         }
 
         const filterCategory = getFilterCategory(product.category);

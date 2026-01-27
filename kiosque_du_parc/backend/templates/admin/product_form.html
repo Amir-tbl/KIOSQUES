@@ -30,11 +30,11 @@
                 <label for="name">Nom du produit *</label>
                 <input type="text" id="name" name="name" required
                        value="{{ product.name if product else '' }}"
-                       placeholder="Ex: Crepe au chocolat">
+                       placeholder="Ex: Crêpe au chocolat">
             </div>
 
             <div class="form-group">
-                <label for="category">Categorie *</label>
+                <label for="category">Catégorie *</label>
                 <select id="category" name="category" required>
                     <option value="">-- Choisir --</option>
                     {% for value, label in categories.items() %}

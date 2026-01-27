@@ -122,7 +122,7 @@ def api_get_settings(db: Session = Depends(get_db)) -> dict:
             "instagram_url": "https://instagram.com",
             "tiktok_url": "https://tiktok.com",
             "site_name": "KIOSQUE DU PARC",
-            "slogan": "Du sucre, du sale, fait minute."
+            "slogan": "Du sucré, du salé, fait minute."
         }
     return {
         "hours_weekday": settings.hours_weekday,

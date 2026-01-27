@@ -6,14 +6,14 @@
 <div class="page-header">
     <div>
         <h1><i class="fa-solid fa-location-dot"></i> Emplacement du jour</h1>
-        <p>Indiquez ou se trouve le foodtruck aujourd'hui</p>
+        <p>Indiquez où se trouve le foodtruck aujourd'hui</p>
     </div>
 </div>
 
 {% if success %}
 <div class="alert alert-success">
     <i class="fa-solid fa-check-circle"></i>
-    Localisation mise a jour avec succes !
+    Localisation mise à jour avec succès !
 </div>
 {% endif %}
 
@@ -37,7 +37,7 @@
             <label for="daily_message">Message du jour (optionnel)</label>
             <textarea id="daily_message" name="daily_message" rows="3"
                       placeholder="Ex: Fermeture exceptionnelle, Nouveau produit disponible...">{{ location.daily_message if location else '' }}</textarea>
-            <small>Ce message sera affiche en evidence sur le site</small>
+            <small>Ce message sera affiché en évidence sur le site</small>
         </div>
 
         <div class="form-actions">
@@ -51,8 +51,8 @@
 <div class="info-box">
     <h3><i class="fa-solid fa-lightbulb"></i> Conseil</h3>
     <p>
-        Mettez a jour l'emplacement chaque matin pour informer vos clients.
-        Le message du jour peut servir pour annoncer des evenements speciaux
+        Mettez à jour l'emplacement chaque matin pour informer vos clients.
+        Le message du jour peut servir pour annoncer des événements spéciaux
         ou des fermetures exceptionnelles.
     </p>
 </div>

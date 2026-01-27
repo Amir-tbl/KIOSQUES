@@ -118,7 +118,7 @@ class SettingsBase(BaseModel):
     instagram_url: str = "https://instagram.com"
     tiktok_url: str = "https://tiktok.com"
     site_name: str = "KIOSQUE DU PARC"
-    slogan: str = "Du sucre, du sale, fait minute."
+    slogan: str = "Du sucré, du salé, fait minute."
 
 
 class SettingsUpdate(BaseModel):
