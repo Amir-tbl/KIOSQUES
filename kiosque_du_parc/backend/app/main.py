@@ -3,9 +3,9 @@ KIOSQUE DU PARC - FastAPI Backend
 Main application entry point.
 """
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -49,13 +49,13 @@ app = FastAPI(
     redoc_url="/redoc" if DEBUG else None
 )
 
-# CORS middleware - allow frontend on Netlify to access the API
+# CORS middleware - autoriser les requetes depuis n'importe quel domaine
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://kiosque.netlify.app"],
+    allow_origins=["*"],  # Autorise tous les domaines (localhost, ton futur domaine, etc.)
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],  # Autorise GET, POST, PUT, DELETE, etc.
+    allow_headers=["*"],  # Autorise tous les headers
 )
 
 # Include routers
