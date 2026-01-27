@@ -468,10 +468,13 @@
             <p class="form__status-message">${message}</p>
         `;
 
+        // Scroll to show the status message
+        elements.formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
         if (type === 'success') {
             setTimeout(() => {
                 elements.formStatus.hidden = true;
-            }, 5000);
+            }, 10000); // 10 seconds instead of 5
         }
     }
 
@@ -513,7 +516,7 @@
                 });
 
                 if (response.ok) {
-                    showFormStatus('success', 'Votre message a ete envoye avec succes ! Nous vous repondrons rapidement.');
+                    showFormStatus('success', 'Votre message a été envoyé avec succès ! Nous vous répondrons rapidement.');
                     elements.contactForm.reset();
                 } else {
                     const error = await response.json();
@@ -521,7 +524,7 @@
                 }
             } catch (error) {
                 console.error('Error submitting contact form:', error);
-                showFormStatus('error', 'Une erreur est survenue. Veuillez reessayer plus tard.');
+                showFormStatus('error', 'Une erreur est survenue. Veuillez réessayer plus tard.');
             } finally {
                 // Re-enable button
                 submitBtn.disabled = false;
