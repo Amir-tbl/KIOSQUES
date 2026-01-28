@@ -28,3 +28,7 @@ FRONTEND_DIR = BASE_DIR.parent  # Parent directory contains index.html and asset
 
 # Debug mode
 DEBUG = os.getenv("DEBUG", "true").lower() == "true"
+
+# CORS - Frontend URLs allowed to access the API
+# Set FRONTEND_URL in Render to your Netlify domain (e.g., https://your-site.netlify.app)
+FRONTEND_URL = os.getenv("FRONTEND_URL", "")

@@ -11,7 +11,7 @@ from pathlib import Path
 
 from app.db import init_db, SessionLocal
 from app.seed import seed_database
-from app.settings import BASE_DIR, FRONTEND_DIR, DEBUG
+from app.settings import BASE_DIR, FRONTEND_DIR, DEBUG, FRONTEND_URL
 from app.routers import api, admin
 
 
@@ -49,10 +49,16 @@ app = FastAPI(
     redoc_url="/redoc" if DEBUG else None
 )
 
-# CORS middleware - autoriser les requetes depuis n'importe quel domaine
+# CORS middleware - autoriser les requetes depuis Netlify et localhost
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Autorise tous les domaines (localhost, ton futur domaine, etc.)
+    allow_origins=[
+        "https://kiosque.netlify.app",  # Production Netlify
+        "http://localhost:3000",  # Dev local frontend
+        "http://localhost:5173",  # Vite dev server
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5173",
+    ],
     allow_credentials=True,
     allow_methods=["*"],  # Autorise GET, POST, PUT, DELETE, etc.
     allow_headers=["*"],  # Autorise tous les headers
@@ -82,8 +88,8 @@ def serve_frontend():
 
 @app.get("/health")
 def health_check():
-    """Health check endpoint."""
-    return {"status": "ok", "app": "KIOSQUE DU PARC"}
+    """Ultra-light health check endpoint for Render keep-alive pings."""
+    return {"status": "ok"}
 
 
 # For running with: python -m app.main
