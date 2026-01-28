@@ -86,7 +86,7 @@ def serve_frontend():
     return {"error": "Frontend not found. Place index.html in the parent directory."}
 
 
-@app.get("/health")
+@app.api_route("/health", methods=["GET", "HEAD"])
 def health_check():
     """Ultra-light health check endpoint for Render keep-alive pings."""
     return {"status": "ok"}
