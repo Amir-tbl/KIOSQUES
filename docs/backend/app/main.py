@@ -49,11 +49,11 @@ app = FastAPI(
     redoc_url="/redoc" if DEBUG else None
 )
 
-# CORS middleware - autoriser les requetes depuis Netlify et localhost
+# CORS middleware - autoriser les requetes depuis GitHub Pages et localhost
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://kiosque.netlify.app",  # Production Netlify
+        "https://amir-tbl.github.io",  # Production GitHub Pages
         "http://localhost:3000",  # Dev local frontend
         "http://localhost:5173",  # Vite dev server
         "http://127.0.0.1:3000",
