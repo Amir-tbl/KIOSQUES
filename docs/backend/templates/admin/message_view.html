@@ -1,0 +1,57 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Message de {{ message.name }}{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="fa-solid fa-envelope-open"></i> Message</h1>
+    <a href="/admin/messages" class="btn btn-secondary">
+        <i class="fa-solid fa-arrow-left"></i> Retour
+    </a>
+</div>
+
+<div class="message-view">
+    <div class="message-header">
+        <div class="message-meta">
+            <div class="meta-item">
+                <i class="fa-solid fa-user"></i>
+                <strong>De:</strong> {{ message.name }}
+            </div>
+            <div class="meta-item">
+                <i class="fa-solid fa-envelope"></i>
+                <strong>Email:</strong> <a href="mailto:{{ message.email }}">{{ message.email }}</a>
+            </div>
+            {% if message.phone %}
+            <div class="meta-item">
+                <i class="fa-solid fa-phone"></i>
+                <strong>Tel:</strong> <a href="tel:{{ message.phone }}">{{ message.phone }}</a>
+            </div>
+            {% endif %}
+            <div class="meta-item">
+                <i class="fa-solid fa-calendar"></i>
+                <strong>Date:</strong> {{ message.created_at.strftime('%d/%m/%Y a %H:%M') }}
+            </div>
+        </div>
+    </div>
+
+    <div class="message-subject">
+        <strong>Sujet:</strong> {{ message.subject }}
+    </div>
+
+    <div class="message-body">
+        <strong>Message:</strong>
+        <div class="message-content">
+            {{ message.message | replace('\n', '<br>') | safe }}
+        </div>
+    </div>
+
+    <div class="message-actions">
+        <a href="mailto:{{ message.email }}?subject=Re: {{ message.subject }}" class="btn btn-primary">
+            <i class="fa-solid fa-reply"></i> Repondre par email
+        </a>
+        <a href="/admin/messages/{{ message.id }}/delete" class="btn btn-danger">
+            <i class="fa-solid fa-trash"></i> Supprimer
+        </a>
+    </div>
+</div>
+{% endblock %}

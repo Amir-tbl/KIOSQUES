@@ -1,0 +1,32 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Supprimer le message{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="fa-solid fa-trash"></i> Supprimer le message</h1>
+</div>
+
+<div class="delete-confirm">
+    <div class="warning-icon">
+        <i class="fa-solid fa-exclamation-triangle"></i>
+    </div>
+    <p>Etes-vous sur de vouloir supprimer ce message ?</p>
+    <div class="delete-details">
+        <p><strong>De:</strong> {{ message.name }} ({{ message.email }})</p>
+        <p><strong>Sujet:</strong> {{ message.subject }}</p>
+        <p><strong>Date:</strong> {{ message.created_at.strftime('%d/%m/%Y a %H:%M') }}</p>
+    </div>
+    <p class="warning-text">Cette action est irreversible.</p>
+    <div class="delete-actions">
+        <a href="/admin/messages/{{ message.id }}" class="btn btn-secondary">
+            <i class="fa-solid fa-arrow-left"></i> Annuler
+        </a>
+        <form action="/admin/messages/{{ message.id }}/delete" method="post" style="display: inline;">
+            <button type="submit" class="btn btn-danger">
+                <i class="fa-solid fa-trash"></i> Supprimer definitivement
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

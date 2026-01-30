@@ -1,0 +1,59 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Localisation{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1><i class="fa-solid fa-location-dot"></i> Emplacement du jour</h1>
+        <p>Indiquez où se trouve le kiosque</p>
+    </div>
+</div>
+
+{% if success %}
+<div class="alert alert-success">
+    <i class="fa-solid fa-check-circle"></i>
+    Localisation mise à jour avec succès !
+</div>
+{% endif %}
+
+<div class="form-container">
+    <form method="POST" class="admin-form">
+        <div class="form-group">
+            <label for="today_location">Emplacement</label>
+            <input type="text" id="today_location" name="today_location"
+                   value="{{ location.today_location if location else '' }}"
+                   placeholder="Ex: Parc de la Mairie - Centre-ville">
+        </div>
+
+        <div class="form-group">
+            <label for="today_hours">Horaires du jour</label>
+            <input type="text" id="today_hours" name="today_hours"
+                   value="{{ location.today_hours if location else '' }}"
+                   placeholder="Ex: 11h30 - 14h00 / 18h00 - 21h00">
+        </div>
+
+        <div class="form-group">
+            <label for="daily_message">Message du jour (optionnel)</label>
+            <textarea id="daily_message" name="daily_message" rows="3"
+                      placeholder="Ex: Fermeture exceptionnelle, Nouveau produit disponible...">{{ location.daily_message if location else '' }}</textarea>
+            <small>Ce message sera affiché en évidence sur le site</small>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-check"></i> Enregistrer
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="info-box">
+    <h3><i class="fa-solid fa-lightbulb"></i> Conseil</h3>
+    <p>
+        Mettez à jour l'emplacement chaque matin pour informer vos clients.
+        Le message du jour peut servir pour annoncer des événements spéciaux
+        ou des fermetures exceptionnelles.
+    </p>
+</div>
+{% endblock %}

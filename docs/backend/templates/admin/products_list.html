@@ -1,0 +1,85 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Produits{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1><i class="fa-solid fa-utensils"></i> Produits</h1>
+        <p>Gérez le menu du kiosque</p>
+    </div>
+    <a href="/admin/products/new" class="btn btn-primary">
+        <i class="fa-solid fa-plus"></i> Nouveau produit
+    </a>
+</div>
+
+<div class="table-container">
+    <div class="table-scroll">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Ordre</th>
+                <th>Image</th>
+                <th>Nom</th>
+                <th>Catégorie</th>
+                <th>Prix</th>
+                <th>Statut</th>
+                <th>Best-seller</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr class="{% if not product.is_active %}inactive{% endif %}">
+                <td>{{ product.display_order }}</td>
+                <td>
+                    {% if product.image_filename %}
+                    <img src="/assets/img/{{ product.image_filename }}" alt="{{ product.name }}" class="table-thumb">
+                    {% else %}
+                    <span class="no-image"><i class="fa-solid fa-image"></i></span>
+                    {% endif %}
+                </td>
+                <td><strong>{{ product.name }}</strong></td>
+                <td>
+                    <span class="badge badge-category">
+                        {{ categories.get(product.category, product.category) }}
+                    </span>
+                </td>
+                <td class="price">{{ "%.2f"|format(product.price) }} EUR</td>
+                <td>
+                    {% if product.is_active %}
+                    <span class="badge badge-success"><i class="fa-solid fa-check"></i> Actif</span>
+                    {% else %}
+                    <span class="badge badge-muted"><i class="fa-solid fa-eye-slash"></i> Inactif</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if product.is_best_seller %}
+                    <span class="badge badge-gold"><i class="fa-solid fa-star"></i> Oui</span>
+                    {% else %}
+                    <span class="badge badge-muted">Non</span>
+                    {% endif %}
+                </td>
+                <td class="actions">
+                    <a href="/admin/products/{{ product.id }}/edit" class="btn btn-small btn-secondary" title="Modifier">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                    <a href="/admin/products/{{ product.id }}/delete" class="btn btn-small btn-danger" title="Supprimer">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="8" class="empty-message">
+                    <i class="fa-solid fa-inbox"></i>
+                    <p>Aucun produit</p>
+                    <a href="/admin/products/new" class="btn btn-primary">Ajouter un produit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+{% endblock %}

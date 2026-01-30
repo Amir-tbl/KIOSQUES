@@ -1,0 +1,98 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Parametres{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1><i class="fa-solid fa-gear"></i> Parametres generaux</h1>
+        <p>Configurez les informations du site</p>
+    </div>
+</div>
+
+{% if success %}
+<div class="alert alert-success">
+    <i class="fa-solid fa-check-circle"></i>
+    Paramètres mis à jour avec succès !
+</div>
+{% endif %}
+
+<div class="form-container">
+    <form method="POST" class="admin-form">
+        <h3 class="form-section-title">
+            <i class="fa-solid fa-store"></i> Informations du site
+        </h3>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="site_name">Nom du site</label>
+                <input type="text" id="site_name" name="site_name"
+                       value="{{ settings.site_name if settings else 'KIOSQUE DU PARC' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="slogan">Slogan</label>
+                <input type="text" id="slogan" name="slogan"
+                       value="{{ settings.slogan if settings else 'Du sucré, du salé, fait minute.' }}">
+            </div>
+        </div>
+
+        <h3 class="form-section-title">
+            <i class="fa-solid fa-clock"></i> Horaires généraux
+        </h3>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="hours_weekday">Horaires semaine (midi)</label>
+                <input type="text" id="hours_weekday" name="hours_weekday"
+                       value="{{ settings.hours_weekday if settings else '11h30 - 14h00' }}"
+                       placeholder="11h30 - 14h00">
+            </div>
+
+            <div class="form-group">
+                <label for="hours_evening">Horaires soir</label>
+                <input type="text" id="hours_evening" name="hours_evening"
+                       value="{{ settings.hours_evening if settings else '18h00 - 21h00' }}"
+                       placeholder="18h00 - 21h00">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="hours_weekend">Horaires week-end</label>
+            <input type="text" id="hours_weekend" name="hours_weekend"
+                   value="{{ settings.hours_weekend if settings else '09h00 - 15h00' }}"
+                   placeholder="09h00 - 15h00">
+        </div>
+
+        <h3 class="form-section-title">
+            <i class="fa-solid fa-share-nodes"></i> Reseaux sociaux
+        </h3>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="instagram_url">
+                    <i class="fa-brands fa-instagram"></i> URL Instagram
+                </label>
+                <input type="url" id="instagram_url" name="instagram_url"
+                       value="{{ settings.instagram_url if settings else 'https://instagram.com' }}"
+                       placeholder="https://instagram.com/votre-compte">
+            </div>
+
+            <div class="form-group">
+                <label for="tiktok_url">
+                    <i class="fa-brands fa-tiktok"></i> URL TikTok
+                </label>
+                <input type="url" id="tiktok_url" name="tiktok_url"
+                       value="{{ settings.tiktok_url if settings else 'https://tiktok.com' }}"
+                       placeholder="https://tiktok.com/@votre-compte">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-check"></i> Enregistrer
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

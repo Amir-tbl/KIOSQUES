@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin{% endblock %} - KIOSQUE DU PARC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/admin.css">
+</head>
+<body>
+    {% if admin %}
+    <nav class="admin-nav">
+        <div class="nav-brand">
+            <i class="fa-solid fa-leaf"></i>
+            <span>KIOSQUE DU PARC</span>
+        </div>
+        <div class="nav-links">
+            <a href="/admin" class="nav-link {% if request.url.path == '/admin' %}active{% endif %}" data-label="Dashboard" title="Dashboard">
+                <i class="fa-solid fa-gauge"></i><span class="nav-text"> Dashboard</span>
+            </a>
+            <a href="/admin/products" class="nav-link {% if '/products' in request.url.path %}active{% endif %}" data-label="Produits" title="Produits">
+                <i class="fa-solid fa-utensils"></i><span class="nav-text"> Produits</span>
+            </a>
+            <a href="/admin/location" class="nav-link {% if '/location' in request.url.path %}active{% endif %}" data-label="Localisation" title="Localisation">
+                <i class="fa-solid fa-location-dot"></i><span class="nav-text"> Lieu</span>
+            </a>
+            <a href="/admin/schedule" class="nav-link {% if '/schedule' in request.url.path %}active{% endif %}" data-label="Planning" title="Planning">
+                <i class="fa-solid fa-calendar"></i><span class="nav-text"> Planning</span>
+            </a>
+            <a href="/admin/messages" class="nav-link {% if '/messages' in request.url.path %}active{% endif %}" data-label="Messages" title="Messages">
+                <i class="fa-solid fa-envelope"></i><span class="nav-text"> Messages</span>
+            </a>
+            <a href="/admin/settings" class="nav-link {% if '/settings' in request.url.path %}active{% endif %}" data-label="Parametres" title="Parametres">
+                <i class="fa-solid fa-gear"></i><span class="nav-text"> Params</span>
+            </a>
+        </div>
+        <div class="nav-user">
+            <span><i class="fa-solid fa-user"></i> {{ admin.username }}</span>
+            <a href="/admin/logout" class="btn btn-logout">
+                <i class="fa-solid fa-right-from-bracket"></i> Deconnexion
+            </a>
+        </div>
+    </nav>
+    {% endif %}
+
+    <main class="admin-main {% if not admin %}login-page{% endif %}">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="admin-footer">
+        <p>KIOSQUE DU PARC - Administration</p>
+        <a href="/" target="_blank"><i class="fa-solid fa-external-link"></i> Voir le site</a>
+    </footer>
+</body>
+</html>

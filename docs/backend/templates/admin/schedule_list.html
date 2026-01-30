@@ -1,0 +1,85 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Planning{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1><i class="fa-solid fa-calendar"></i> Planning hebdomadaire</h1>
+        <p>Gérez les horaires de la semaine</p>
+    </div>
+    <a href="/admin/schedule/new" class="btn btn-primary">
+        <i class="fa-solid fa-plus"></i> Nouveau créneau
+    </a>
+</div>
+
+<div class="table-container">
+    <div class="table-scroll">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Jour</th>
+                <th>Statut</th>
+                <th>Horaires</th>
+                <th>Visible</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for schedule in schedules %}
+            <tr class="{% if not schedule.is_active %}inactive{% endif %} {% if schedule.day_of_week >= 5 %}weekend{% endif %}">
+                <td>
+                    <strong>{{ day_names.get(schedule.day_of_week, '') }}</strong>
+                </td>
+                <td>
+                    {% if schedule.place == 'Ouvert' %}
+                    <span class="badge badge-success"><i class="fa-solid fa-door-open"></i> Ouvert</span>
+                    {% else %}
+                    <span class="badge badge-muted"><i class="fa-solid fa-door-closed"></i> Fermé</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if schedule.place == 'Ouvert' and schedule.start_time and schedule.end_time %}
+                    {{ schedule.start_time }} - {{ schedule.end_time }}
+                    {% else %}
+                    <span class="text-muted">-</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if schedule.is_active %}
+                    <span class="badge badge-success"><i class="fa-solid fa-check"></i> Oui</span>
+                    {% else %}
+                    <span class="badge badge-muted"><i class="fa-solid fa-eye-slash"></i> Non</span>
+                    {% endif %}
+                </td>
+                <td class="actions">
+                    <a href="/admin/schedule/{{ schedule.id }}/edit" class="btn btn-small btn-secondary" title="Modifier">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                    <a href="/admin/schedule/{{ schedule.id }}/delete" class="btn btn-small btn-danger" title="Supprimer">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" class="empty-message">
+                    <i class="fa-solid fa-inbox"></i>
+                    <p>Aucun créneau défini</p>
+                    <a href="/admin/schedule/new" class="btn btn-primary">Ajouter un créneau</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+
+<div class="info-box">
+    <h3><i class="fa-solid fa-info-circle"></i> Information</h3>
+    <p>
+        Définissez le statut (Ouvert/Fermé) pour chaque jour de la semaine.
+        Les créneaux non visibles ne seront pas affichés sur le site.
+    </p>
+</div>
+{% endblock %}

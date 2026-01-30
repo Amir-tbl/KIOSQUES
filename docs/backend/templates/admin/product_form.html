@@ -1,0 +1,110 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{% if product %}Modifier{% else %}Nouveau{% endif %} produit{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1>
+            <i class="fa-solid fa-{% if product %}pen{% else %}plus{% endif %}"></i>
+            {% if product %}Modifier le produit{% else %}Nouveau produit{% endif %}
+        </h1>
+        <p>{% if product %}{{ product.name }}{% else %}Ajouter un nouveau produit au menu{% endif %}</p>
+    </div>
+    <a href="/admin/products" class="btn btn-secondary">
+        <i class="fa-solid fa-arrow-left"></i> Retour
+    </a>
+</div>
+
+{% if error %}
+<div class="alert alert-error">
+    <i class="fa-solid fa-circle-exclamation"></i>
+    {{ error }}
+</div>
+{% endif %}
+
+<div class="form-container">
+    <form method="POST" class="admin-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name">Nom du produit *</label>
+                <input type="text" id="name" name="name" required
+                       value="{{ product.name if product else '' }}"
+                       placeholder="Ex: Crêpe au chocolat">
+            </div>
+
+            <div class="form-group">
+                <label for="category">Catégorie *</label>
+                <select id="category" name="category" required>
+                    <option value="">-- Choisir --</option>
+                    {% for value, label in categories.items() %}
+                    <option value="{{ value }}"
+                            {% if product and product.category == value %}selected{% endif %}>
+                        {{ label }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="price">Prix (EUR) *</label>
+                <input type="number" id="price" name="price" step="0.10" min="0" required
+                       value="{{ product.price if product else '' }}"
+                       placeholder="5.90">
+            </div>
+
+            <div class="form-group">
+                <label for="display_order">Ordre d'affichage</label>
+                <input type="number" id="display_order" name="display_order" min="0"
+                       value="{{ product.display_order if product else 0 }}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="image_filename">Nom du fichier image</label>
+            <input type="text" id="image_filename" name="image_filename"
+                   value="{{ product.image_filename if product else '' }}"
+                   placeholder="Ex: Crêpe_chocolat.jpeg">
+            <small>Le fichier doit etre dans /assets/img/</small>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="3"
+                      placeholder="Description courte du produit">{{ product.description if product else '' }}</textarea>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group checkbox-group">
+                <label>
+                    <input type="checkbox" name="is_active" value="true"
+                           {% if not product or product.is_active %}checked{% endif %}>
+                    <span class="checkbox-label">
+                        <i class="fa-solid fa-eye"></i> Produit actif (visible sur le site)
+                    </span>
+                </label>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <label>
+                    <input type="checkbox" name="is_best_seller" value="true"
+                           {% if product and product.is_best_seller %}checked{% endif %}>
+                    <span class="checkbox-label">
+                        <i class="fa-solid fa-star"></i> Best-seller
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-check"></i>
+                {% if product %}Enregistrer{% else %}Creer le produit{% endif %}
+            </button>
+            <a href="/admin/products" class="btn btn-secondary">Annuler</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
