@@ -42,7 +42,7 @@ async def lifespan(app: FastAPI):
 # Create FastAPI app
 app = FastAPI(
     title="KIOSQUE DU PARC",
-    description="Backend API for the KIOSQUE DU PARC foodtruck website",
+    description="Backend API for the KIOSQUE DU PARC website",
     version="1.0.0",
     lifespan=lifespan,
     docs_url="/docs" if DEBUG else None,
