@@ -58,9 +58,9 @@ class Schedule(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     day_of_week = Column(Integer, nullable=False)  # 0-6 (Monday-Sunday)
-    place = Column(String(200), nullable=False)
-    start_time = Column(String(5), nullable=False)  # HH:MM format
-    end_time = Column(String(5), nullable=False)    # HH:MM format
+    place = Column(String(200), nullable=False)  # "Ouvert" or "Fermé"
+    start_time = Column(String(5), nullable=True)  # HH:MM format (optional if closed)
+    end_time = Column(String(5), nullable=True)    # HH:MM format (optional if closed)
     is_active = Column(Boolean, default=True)
 
 

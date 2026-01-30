@@ -89,14 +89,18 @@ def api_get_schedule(db: Session = Depends(get_db)) -> List[dict]:
     # Group by day and format
     result = []
     for schedule in schedules:
-        hours = f"{schedule.start_time} - {schedule.end_time}"
+        # Format hours only if status is "Ouvert" and times exist
+        if schedule.place == "Ouvert" and schedule.start_time and schedule.end_time:
+            hours = f"{schedule.start_time} - {schedule.end_time}"
+        else:
+            hours = "-"
 
         # Check if same day already exists (multiple time slots)
         existing = next(
             (s for s in result if s["day_index"] == schedule.day_of_week and s["place"] == schedule.place),
             None
         )
-        if existing:
+        if existing and hours != "-":
             existing["hours"] += f" / {hours}"
         else:
             result.append({

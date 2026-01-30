@@ -252,12 +252,16 @@
         // Schedule is already sorted by day_index from API
         schedule.forEach(entry => {
             const card = document.createElement('div');
-            card.className = `location__card${entry.is_weekend ? ' location__card--highlight' : ''}`;
+            const isClosed = entry.place === 'Fermé';
+            card.className = `location__card${entry.is_weekend ? ' location__card--highlight' : ''}${isClosed ? ' location__card--closed' : ''}`;
+
+            const statusClass = isClosed ? 'location__status--closed' : 'location__status--open';
+            const hoursDisplay = isClosed ? '' : `<div class="location__hours">${entry.hours}</div>`;
 
             card.innerHTML = `
                 <div class="location__day">${entry.day}</div>
-                <div class="location__place">${entry.place}</div>
-                <div class="location__hours">${entry.hours}</div>
+                <div class="location__status ${statusClass}">${entry.place}</div>
+                ${hoursDisplay}
             `;
 
             elements.scheduleGrid.appendChild(card);

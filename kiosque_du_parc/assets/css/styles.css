@@ -1087,6 +1087,10 @@ select {
     border: 2px solid var(--color-primary);
 }
 
+.location__card--closed {
+    opacity: 0.7;
+}
+
 .location__day {
     font-size: var(--font-size-lg);
     font-weight: 700;
@@ -1098,6 +1102,24 @@ select {
     font-weight: 500;
     color: var(--color-gray-800);
     margin-bottom: var(--spacing-2);
+}
+
+.location__status {
+    font-weight: 600;
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-full);
+    display: inline-block;
+    margin-bottom: var(--spacing-2);
+}
+
+.location__status--open {
+    background: var(--color-primary-lighter);
+    color: var(--color-primary);
+}
+
+.location__status--closed {
+    background: var(--color-gray-200);
+    color: var(--color-gray-600);
 }
 
 .location__hours {

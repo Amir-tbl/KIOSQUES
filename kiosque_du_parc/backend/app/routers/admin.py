@@ -361,8 +361,8 @@ def schedule_create(
     request: Request,
     day_of_week: int = Form(...),
     place: str = Form(...),
-    start_time: str = Form(...),
-    end_time: str = Form(...),
+    start_time: str = Form(""),
+    end_time: str = Form(""),
     is_active: bool = Form(False),
     admin: dict = Depends(admin_required),
     db: Session = Depends(get_db)
@@ -373,8 +373,8 @@ def schedule_create(
             db,
             day_of_week=day_of_week,
             place=place,
-            start_time=start_time,
-            end_time=end_time,
+            start_time=start_time if place == "Ouvert" else None,
+            end_time=end_time if place == "Ouvert" else None,
             is_active=is_active
         )
         return RedirectResponse(url="/admin/schedule", status_code=303)
@@ -415,8 +415,8 @@ def schedule_update_action(
     schedule_id: int,
     day_of_week: int = Form(...),
     place: str = Form(...),
-    start_time: str = Form(...),
-    end_time: str = Form(...),
+    start_time: str = Form(""),
+    end_time: str = Form(""),
     is_active: bool = Form(False),
     admin: dict = Depends(admin_required),
     db: Session = Depends(get_db)
@@ -432,8 +432,8 @@ def schedule_update_action(
             schedule_id,
             day_of_week=day_of_week,
             place=place,
-            start_time=start_time,
-            end_time=end_time,
+            start_time=start_time if place == "Ouvert" else None,
+            end_time=end_time if place == "Ouvert" else None,
             is_active=is_active
         )
         return RedirectResponse(url="/admin/schedule", status_code=303)
